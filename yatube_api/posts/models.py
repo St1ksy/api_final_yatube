@@ -26,6 +26,9 @@ class Post(models.Model):
         Group, on_delete=models.CASCADE, related_name='posts',
         null=True, blank=True)
 
+    class Meta:
+        ordering = ('-pub_date',)
+
     def __str__(self):
         return self.text
 
@@ -51,3 +54,14 @@ class Follow(models.Model):
         User,
         on_delete=models.CASCADE,
         related_name='following')
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['user', 'following'],
+                name='unique_follow'
+            )
+        ]
+
+    def __str__(self):
+        return f'{self.user} follows {self.following}'
