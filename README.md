@@ -16,12 +16,12 @@ cd api_final_yatube
 2. Создайте и активируйте виртуальное окружение:
 
 ```
-python3 -m venv .venv
+python -m venv venv
 ```
 
 ```
 source .venv/bin/activate  # Для Linux/MacOS
-.venv\Scripts\activate  # Для Windows
+Source venv/Scripts/activate  # Для Windows
 ```
 
 3. Установите зависимости из файла requirements.txt:
@@ -37,13 +37,13 @@ pip install -r requirements.txt
 4. Выполните миграции:
 
 ```
-python manage.py migrate
+python yatube_api/manage.py migrate
 ```
 
 5. Запустите проект:
 
 ```
-python manage.py runserver
+python yatube_api/manage.py runserver
 ```
 
 # Примеры запросов:

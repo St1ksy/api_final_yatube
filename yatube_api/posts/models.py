@@ -4,6 +4,16 @@ from django.db import models
 User = get_user_model()
 
 
+# Модель для группы, которая включает название, уникальный slug и описание
+class Group(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=50, unique=True)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+
 # Модель для поста, который включает текст, дату публикации, автора, изображение и группу
 class Post(models.Model):
     text = models.TextField()
@@ -29,16 +39,6 @@ class Comment(models.Model):
     text = models.TextField()
     created = models.DateTimeField(
         'Дата добавления', auto_now_add=True, db_index=True)
-
-
-# Модель для группы, которая включает название, уникальный slug и описание
-class Group(models.Model):
-    title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=50, unique=True)
-    description = models.TextField()
-
-    def __str__(self):
-        return self.title
 
 
 # Модель для подписки, которая хранит информацию о том, кто подписан на кого
