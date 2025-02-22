@@ -21,7 +21,7 @@ python -m venv venv
 
 ```
 source .venv/bin/activate  # Для Linux/MacOS
-Source venv/Scripts/activate  # Для Windows
+. venv/Scripts/activate  # Для Windows
 ```
 
 3. Установите зависимости из файла requirements.txt:
@@ -45,32 +45,3 @@ python yatube_api/manage.py migrate
 ```
 python yatube_api/manage.py runserver
 ```
-
-# Примеры запросов:
-
-- Получение постов постранично
-```
-GET /api/v1/posts/?limit=10&offset=10
-```
-
-- Получение всех комменатриев
-
-```
-GET /api/v1/posts/{post_id}/comments/
-```
-
-- Удаление комментария
-
-```
-DEL /api/v1/posts/{post_id}/comments/{comment_id}/
-```
-
-- Публикация поста
-```
-POST /api/v1/posts/
-{
-    "text": "string"
-}
-```
-
-P.S. Все доступные запросы можно увидеть в документации по адресу /redoc/.
