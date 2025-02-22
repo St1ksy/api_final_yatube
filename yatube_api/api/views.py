@@ -7,12 +7,12 @@ from .serializers import (
     CommentSerializer,
     FollowSerializer
 )
-from .permissions import OwnershipPermission
+from .permissions import IsAuthorOrReadOnly 
 
 
 # Базовый ViewSet для управления разрешениями на доступ к объектам
 class PermissionViewset(viewsets.ModelViewSet):
-    permission_classes = (OwnershipPermission,)
+    permission_classes = (IsAuthorOrReadOnly,)
 
 
 # ViewSet для модели Group, доступный только для чтения
